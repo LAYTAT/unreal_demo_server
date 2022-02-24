@@ -17,7 +17,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#define SERVERPORT "6666"    // the port users will be connecting to
+#define SERVERPORT "4951"    // the port users will be connecting to
 
 int main(int argc, char *argv[])
 {

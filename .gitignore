@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+.idea/deployment.xml
+.idea/modules.xml
+.idea/unreal_demo_server.iml
+.idea/vcs.xml

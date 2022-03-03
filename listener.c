@@ -77,7 +77,7 @@ int main(void)
     freeaddrinfo(servinfo);
 
 //    printf("listener: waiting to recvfrom...\n");
-    fprintf( stderr, "listener: waiting to recvfrom. . .");
+    fprintf( stderr, "listener: waiting to recvfrom at port %s ......", MYPORT);
 
     addr_len = sizeof their_addr;
     if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0,

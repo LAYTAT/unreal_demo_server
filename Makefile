@@ -4,7 +4,7 @@ CFLAGS = -g -c -Wall
 #-pedantic
 
 all: talker listener
-talker: 
+talker: talker.o
 	    $(CC) -o talker talker.o
 
 listener: listener.o

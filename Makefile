@@ -7,7 +7,7 @@ all: talker listener
 talker: 
 	    $(CC) -o talker talker.o
 
-net_client: net_client.o
+listener: listener.o
 	    $(CC) -o listener listener.o
 
 %.o:    %.c

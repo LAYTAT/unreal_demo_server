@@ -16,3 +16,4 @@ net_client: net_client.o
 clean:
 	rm talker
 	rm listener
+	rm *.o

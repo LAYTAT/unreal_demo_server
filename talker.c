@@ -17,8 +17,6 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#define SERVERPORT "20001"    // the port users will be connecting to
-
 int main(int argc, char *argv[])
 {
     int sockfd;
@@ -26,10 +24,12 @@ int main(int argc, char *argv[])
     int rv;
     int numbytes;
 
-    if (argc != 3) {
-        fprintf(stderr,"usage: talker hostname message\n");
+    if (argc != 4) {
+        fprintf(stderr,"usage: talker hostname port message\n");
         exit(1);
     }
+
+    const char * SERVERPORT = argv[2];
 
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_INET; // set to AF_INET to use IPv4
@@ -56,9 +56,9 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    if ((numbytes = sendto(sockfd, argv[2], strlen(argv[2]), 0,
+    if ((numbytes = sendto(sockfd, argv[3], strlen(argv[3]), 0,
                            p->ai_addr, p->ai_addrlen)) == -1) {
-        perror("talker: sendto");
+        perror("talker: sendto ");
         exit(1);
     }
 

@@ -17,8 +17,6 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#define MYPORT "20001"    // the port users will be connecting to
-
 #define MAXBUFLEN 100
 
 // get sockaddr, IPv4 or IPv6:
@@ -31,7 +29,7 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
     int sockfd;
     struct addrinfo hints, *servinfo, *p;
@@ -46,6 +44,12 @@ int main(void)
     hints.ai_family = AF_INET; // set to AF_INET to use IPv4
     hints.ai_socktype = SOCK_DGRAM;
     hints.ai_flags = AI_PASSIVE; // use my IP
+
+    if(argc != 2){
+        fprintf(stderr, "please specify the port to listen");
+    }
+    
+    const char * MYPORT = argv[1];
 
     if ((rv = getaddrinfo(NULL, MYPORT, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
